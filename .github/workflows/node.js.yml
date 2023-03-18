@@ -28,6 +28,11 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
+    - uses: wemogy/next-version-action@1.0.2
+      id: release-version
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        projects: 'Single'
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
